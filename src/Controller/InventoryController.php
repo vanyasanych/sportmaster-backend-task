@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\DTO\Request\InventoryRequest;
 use App\Facade\InventoryFacade;
 use App\Form\InventoryRequestFormType;
-use App\Service\EntityManager\InventoryManager;
 use App\Service\ResponseManager\InventoryResponseManager;
 use FOS\RestBundle\View\View;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

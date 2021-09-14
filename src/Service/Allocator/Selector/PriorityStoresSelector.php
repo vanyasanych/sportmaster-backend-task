@@ -25,6 +25,7 @@ class PriorityStoresSelector
         $this->storeManager = $storeManager;
         $this->responsibleStoreResponseBuilder = $responsibleStoreResponseBuilder;
     }
+
     /**
      * @param ProductGroup $productGroup
      *

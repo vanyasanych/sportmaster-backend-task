@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Cart;
 use App\Service\Allocator\StoresResponsibilityAllocator;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -34,9 +32,6 @@ class AllocatorController extends AbstractFOSRestController
      * @param Cart $cart
      *
      * @return View
-     *
-     * @throws NoResultException
-     * @throws NonUniqueResultException
      */
     public function allocate(Cart $cart): View
     {

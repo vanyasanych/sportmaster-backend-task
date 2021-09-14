@@ -2,17 +2,10 @@
 
 namespace App\Controller;
 
-use App\DTO\Request\RequestList\StoreListRequest;
 use App\DTO\Request\StoreRequest;
-use App\Entity\Store;
 use App\Facade\StoreFacade;
-use App\Form\ListForm\StoreListFormType;
 use App\Form\StoreRequestFormType;
-use App\Helpers\Pagination;
-use App\Service\EntityManager\StoreManager;
 use App\Service\ResponseManager\StoreResponseManager;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -45,13 +38,11 @@ class StoreController extends AbstractFOSRestController
      * @param FormFactoryInterface $formFactory
      * @param StoreFacade $storeFacade
      * @param StoreResponseManager $storeResponseManager
-     * @param StoreManager $storeManager
      */
     public function __construct(
         FormFactoryInterface $formFactory,
         StoreFacade $storeFacade,
-        StoreResponseManager $storeResponseManager,
-        StoreManager $storeManager
+        StoreResponseManager $storeResponseManager
     ) {
         $this->formFactory = $formFactory;
         $this->storeFacade = $storeFacade;
@@ -78,7 +69,7 @@ class StoreController extends AbstractFOSRestController
 
         $store = $this->storeFacade->createByRequest($storeRequest);
 
-        return $this->storeResponseManager->createView($store,  Response::HTTP_CREATED);
+        return $this->storeResponseManager->createView($store, Response::HTTP_CREATED);
     }
 
 }
