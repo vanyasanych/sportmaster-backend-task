@@ -4,7 +4,6 @@ namespace App\Service\EntityManager;
 
 use App\Entity\EntityInterface;
 use App\Entity\Inventory;
-use App\Factory\InventoryFactory;
 use App\Repository\InventoryRepository;
 use Doctrine\ORM\EntityManagerInterface as DoctrineEntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
@@ -37,7 +36,7 @@ class InventoryManager implements EntityManagerInterface
      */
     public function create(): Inventory
     {
-        $Inventory = InventoryFactory::createEntity();
+        $Inventory = new Inventory();
 
         $this->entityManager->persist($Inventory);
 

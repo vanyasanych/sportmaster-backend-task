@@ -5,21 +5,21 @@ namespace App\Service\Allocator\Calculator;
 class StoreLimitCalculator
 {
     /**
-     * @param array $priorityStoresProductQuantities
+     * @param array $quantities
      * @param int $productCount
      *
      * @return int
      */
-    public static function calculate(array $priorityStoresProductQuantities, int $productCount): int
+    public static function calculate(array $quantities, int $productCount): int
     {
         $storesCounter = 0;
-        $priorityStoresProductQuantitySum = 0;
-        foreach ($priorityStoresProductQuantities as $priorityStoresProductQuantity) {
+        $quantitiesSum = 0;
+        foreach ($quantities as $quantity) {
 
-            $priorityStoresProductQuantitySum += $priorityStoresProductQuantity;
+            $quantitiesSum += $quantity;
 
             $storesCounter++;
-            if ($priorityStoresProductQuantitySum >= $productCount) {
+            if ($quantitiesSum >= $productCount) {
                 break;
             }
         }
