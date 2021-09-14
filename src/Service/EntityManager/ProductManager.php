@@ -29,11 +29,11 @@ class ProductManager implements EntityManagerInterface
      */
     public function create(): Product
     {
-        $Product = new Product();
+        $product = new Product();
 
-        $this->entityManager->persist($Product);
+        $this->entityManager->persist($product);
 
-        return $Product;
+        return $product;
     }
 
     public function remove(EntityInterface $entity, bool $andFlush = true): void
@@ -45,7 +45,7 @@ class ProductManager implements EntityManagerInterface
 
     public function update(EntityInterface $entity, bool $andFlush = true): void
     {
-            $this->entityManager->flush();
+        $this->entityManager->flush();
     }
 
     /**
