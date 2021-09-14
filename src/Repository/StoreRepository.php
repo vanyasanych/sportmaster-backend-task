@@ -8,6 +8,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
+
 /**
  * @method Store|null find($id, $lockMode = null, $lockVersion = null)
  * @method Store|null findOneBy(array $criteria, array $orderBy = null)

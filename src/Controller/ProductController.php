@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\DTO\Request\ProductRequest;
 use App\Facade\ProductFacade;
 use App\Form\ProductRequestFormType;
-use App\Service\EntityManager\ProductManager;
 use App\Service\ResponseManager\ProductResponseManager;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
