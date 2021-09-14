@@ -127,14 +127,8 @@ class StoreManager implements EntityManagerInterface
      *
      * @return ResponsibleStoreResponse[]|array
      */
-    public function findPriorityStoresIdsByLimit(Product $product, int $limit): array
+    public function getResponsibleStoreIdsByLimit(Product $product, int $limit): array
     {
-        $data = $this->getRepository()->findPriorityStoresIdsByLimit($product, $limit);
-        $result = [];
-        foreach ($data as $item) {
-            $result[] = new ResponsibleStoreResponse($item['id']);
-        }
-
-        return $result;
+        return $this->getRepository()->findPriorityStoresIdsByLimit($product, $limit);
     }
 }
