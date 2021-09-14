@@ -34,7 +34,7 @@ class PriorityStoresSelector
     {
         $result = [];
         if ($productGroup->getProductCount() > 1) {
-            $priorityStoresProductQuantities = $this->storeManager->findPriorityStoresProductQuantityByProduct(
+            $priorityStoresProductQuantities = $this->storeManager->findPriorityQuantityByProduct(
                 $productGroup->getProduct()
             );
 

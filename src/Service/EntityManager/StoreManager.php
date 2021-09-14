@@ -105,9 +105,9 @@ class StoreManager implements EntityManagerInterface
      *
      * @return array
      */
-    public function findPriorityStoresProductQuantityByProduct(Product $product): array
+    public function findPriorityQuantityByProduct(Product $product): array
     {
-        $data = $this->getRepository()->findPriorityStoresProductQuantityByProduct($product);
+        $data = $this->getRepository()->findPriorityQuantityByProduct($product);
 
         $result = [];
         array_walk_recursive($data, function ($item) use (&$result) {
