@@ -19,32 +19,25 @@ class InventoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Inventory::class);
     }
 
-    // /**
-    //  * @return Inventory[] Returns an array of Inventory objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param array $storeIds
+     * @param int $quantity
+     *
+     * @return int|mixed|string
+     */
+    public function updateQuantityByStoreIds(array $storeIds, int $quantity)
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $queryBuilder = $this->createQueryBuilder('i');
 
-    /*
-    public function findOneBySomeField($value): ?Inventory
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+        $queryBuilder
+            ->update()
+            ->leftJoin('i.store', 's')
+            ->set('i.quantity', ':quantity')
+            ->where($queryBuilder->expr()->in('s.id', ':storeIds'))
+            ->setParameter('storeIds', $storeIds)
+            ->setParameter('quantity', $quantity)
         ;
+
+        return $queryBuilder->getQuery()->execute();
     }
-    */
 }

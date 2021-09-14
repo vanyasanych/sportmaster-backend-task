@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=CartRepository::class)
  */
-class Cart
+class Cart implements EntityInterface
 {
     /**
      * @ORM\Id
@@ -20,13 +20,13 @@ class Cart
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Product::class, inversedBy="carts")
+     * @ORM\OneToMany(targetEntity=ProductGroup::class, mappedBy="cart", orphanRemoval=true, cascade={"persist"})
      */
-    private $products;
+    private $productGroups;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->productGroups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -35,25 +35,31 @@ class Cart
     }
 
     /**
-     * @return Collection|Product[]
+     * @return Collection|ProductGroup[]
      */
-    public function getProducts(): Collection
+    public function getProductGroups(): Collection
     {
-        return $this->products;
+        return $this->productGroups;
     }
 
-    public function addProduct(Product $product): self
+    public function addProductGroup(ProductGroup $productGroup): self
     {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
+        if (!$this->productGroups->contains($productGroup)) {
+            $this->productGroups[] = $productGroup;
+            $productGroup->setCart($this);
         }
 
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function removeCartProduct(ProductGroup $productGroup): self
     {
-        $this->products->removeElement($product);
+        if ($this->productGroups->removeElement($productGroup)) {
+            // set the owning side to null (unless already changed)
+            if ($productGroup->getCart() === $this) {
+                $productGroup->setCart(null);
+            }
+        }
 
         return $this;
     }
