@@ -7,10 +7,7 @@ class PriorityTest extends AbstractAllocatorControllerTest
     public function testCreate()
     {
         $actualData = $this->getActualData();
-        dump($actualData);
-        dump('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         $expectedData = $this->expectedData();
-        dump($expectedData);
         for ($i = 0; $i < count($expectedData); $i++) {
             $this->assertSame($expectedData[$i]['product_id'], $actualData[$i]['product_id']);
             $this->assertSame($expectedData[$i]['delivery_count'], $actualData[$i]['delivery_count']);
