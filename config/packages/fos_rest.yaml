@@ -1,0 +1,24 @@
+# Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
+fos_rest:
+  body_listener: true
+  param_fetcher_listener: force
+  #    allowed_methods_listener:  true
+  routing_loader: false
+  view:
+    view_response_listener: force
+    formats:
+      json: true
+      xml: false
+      rss: false
+  exception:
+    serialize_exceptions: false
+    messages:
+      Symfony\Component\HttpKernel\Exception\BadRequestHttpException: true
+      Symfony\Component\HttpKernel\Exception\ConflictHttpException: true
+      Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException: true
+      Symfony\Component\HttpKernel\Exception\NotFoundHttpException: true
+      Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException: true
+  format_listener:
+    enabled: true
+    rules:
+      - { path: ^/, prefer_extension: true, fallback_format: json, priorities: [ json ] }
