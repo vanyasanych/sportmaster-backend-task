@@ -4,7 +4,6 @@ namespace App\Service\EntityManager;
 
 use App\Entity\Cart;
 use App\Entity\EntityInterface;
-use App\Factory\CartFactory;
 use App\Repository\CartRepository;
 use Doctrine\ORM\EntityManagerInterface as DoctrineEntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
@@ -37,7 +36,7 @@ class CartManager implements EntityManagerInterface
      */
     public function create(): Cart
     {
-        $cart = CartFactory::createEntity();
+        $cart = new Cart();
 
         $this->entityManager->persist($cart);
 

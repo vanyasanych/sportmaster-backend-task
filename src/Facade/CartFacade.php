@@ -6,7 +6,7 @@ use App\DTO\Request\CartRequest;
 use App\DTO\Request\RequestInterface;
 use App\Entity\Cart;
 use App\Entity\EntityInterface;
-use App\Factory\CartProductFactory;
+use App\Entity\ProductGroup;
 use App\Service\EntityManager\CartManager;
 
 class CartFacade
@@ -45,7 +45,7 @@ class CartFacade
     public function updateByRequest(EntityInterface $cart, RequestInterface $cartRequest): Cart
     {
         foreach ($cartRequest->getGroupProducts() as $groupProduct) {
-            $productGroup = CartProductFactory::createEntity();
+            $productGroup = new ProductGroup();
 
             $productGroup
                 ->setProduct($groupProduct->getProduct())
