@@ -73,7 +73,7 @@ class StoreRepository extends ServiceEntityRepository
      *
      * @return array
      */
-    public function findPriorityStoresProductQuantityByProduct(Product $product): array
+    public function findPriorityQuantityByProduct(Product $product): array
     {
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
