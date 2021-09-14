@@ -83,18 +83,9 @@ class StoresResponsibilityAllocator
                     $priorityStoresProductQuantitySum += $priorityStoresProductQuantity;
 
                     $storesCounter++;
-                    dump("storesCounter = {$storesCounter}");
-                    dump("priorityStoresProductQuantitySum = {$priorityStoresProductQuantitySum}");
-                    dump("priorityStoresProductQuantity = {$priorityStoresProductQuantity}");
-                    dump("CountInCart = {$productGroup->getProductCount()}");
-
                     if ($priorityStoresProductQuantitySum >= $productGroup->getProductCount()) {
-                        dump("exit");
-                        dump("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
                         break;
                     }
-                    dump("------------------------------------------------------------");
                 }
                 $resultStoresIds = $this->storeManager->findPriorityStoresIdsByLimit(
                     $productGroup->getProduct(),
