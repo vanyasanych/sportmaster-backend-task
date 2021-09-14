@@ -4,11 +4,9 @@ namespace App\Service\EntityManager;
 
 use App\Entity\EntityInterface;
 use App\Entity\Product;
-use App\Factory\ProductFactory;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface as DoctrineEntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ProductManager implements EntityManagerInterface
 {
@@ -31,7 +29,7 @@ class ProductManager implements EntityManagerInterface
      */
     public function create(): Product
     {
-        $Product = ProductFactory::createEntity();
+        $Product = new Product();
 
         $this->entityManager->persist($Product);
 

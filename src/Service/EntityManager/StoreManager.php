@@ -5,9 +5,7 @@ namespace App\Service\EntityManager;
 use App\DTO\Response\ResponsibleStoreResponse;
 use App\Entity\EntityInterface;
 use App\Entity\Product;
-use App\Entity\ProductGroup;
 use App\Entity\Store;
-use App\Factory\StoreFactory;
 use App\Repository\StoreRepository;
 use Doctrine\ORM\EntityManagerInterface as DoctrineEntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
@@ -42,7 +40,7 @@ class StoreManager implements EntityManagerInterface
      */
     public function create(): Store
     {
-        $store = StoreFactory::createEntity();
+        $store = new Store();
 
         $this->entityManager->persist($store);
 
