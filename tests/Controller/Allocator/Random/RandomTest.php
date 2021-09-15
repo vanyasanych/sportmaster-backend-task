@@ -4,7 +4,7 @@ namespace App\Tests\Controller\Allocator\Random;
 
 use App\Tests\Controller\Allocator\AbstractAllocatorControllerTest;
 
-class RandomTestAbstractController extends AbstractAllocatorControllerTest
+class RandomTest extends AbstractAllocatorControllerTest
 {
     public function testCreate()
     {
